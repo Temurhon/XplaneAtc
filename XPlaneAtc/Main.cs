@@ -74,7 +74,6 @@ namespace XPlaneAtc
 		{
 			Console.Clear ();
 			while (true) {
-
 				if (currentPosition == "ground") {
 					if (currentAirport == startAirport) {
 						AtcGround (currentAirport, callSign);
