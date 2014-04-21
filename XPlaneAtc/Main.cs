@@ -51,7 +51,6 @@ namespace XPlaneAtc
 			Console.WriteLine ("Starting airport is: " + startAirport);
 			Wait (1000);
 
-
 			//Ask user if they want to file a flightplan or go on
 			Console.WriteLine ("What would you like to do?");
 			Console.WriteLine ("a.File a flightplan");
