@@ -93,7 +93,7 @@ namespace XPlaneAtc
 			Console.WriteLine("a. Declar taxi intentions");
 			Console.WriteLine("b. Declar departing");
 			string answer = Console.ReadLine();
-			declarTaxi(airport, callSign, "28");
+			declarTaxi(airport, callSign, "24");
 
 
 		}
