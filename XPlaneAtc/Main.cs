@@ -1,9 +1,19 @@
 using System;
+using System.Collections;
+
 
 namespace XPlaneAtc
 {
 	public class MainClass	
 	{
+		//public variables
+		public static string[] airports = new string[2];
+		public static string callSign;
+		public static string startAirport;
+		public static string currentPosition; //the currentposition and or state. ex currently taxing or init stage.
+		public static string currentAirport;
+
+
 		//functions
 		public static void createFlightPln (string strtAirport, string endAirport)
 		{
@@ -16,23 +26,16 @@ namespace XPlaneAtc
 			System.Threading.Thread.Sleep(time);
 		}
 
-
-		//public variables
-		public static string[] airports = new string[2];
-		public static string callSign;
-		public static string startAirport;
-		public static string currentPosition;
-		public static string currentAirport;
-
-
-		//main functions
+		//init
 		public static void Main ()
 		{
 			//temp airport list
 			airports[0] = "KSMD";
 			airports[1] = "KFWA";
 
-			//get init variables from user
+			//set variables
+			currentPosition = "init"; //init for initialize
+
 			Console.WriteLine ("Enter callsign. Ex: N1865");
 
 			callSign = Console.ReadLine ();
@@ -69,35 +72,55 @@ namespace XPlaneAtc
 			currentAirport = startAirport;	
 			MainLoop(startAirport, false, currentAirport, currentPosition, callSign);
 		}	
-
+		//public static void
 		public static void MainLoop (string startAirport, bool fltPlanFiled, string currentAirport, string currentPosition, string callSign)
 		{
 			Console.Clear ();
 			while (true) {
+				Wait (5000);
 				if (currentPosition == "ground") {
 					if (currentAirport == startAirport) {
-						AtcGround (currentAirport, callSign);
+						System.Threading.Tasks.Task.Factory.StartNew(() => AtcGround(currentAirport, callSign));
+						//AtcGround (currentAirport, callSign);
 					}
 				}
 			}
 		}
+
+			/*
+			NOTE:
+			Most of the code in the AtcGround function is just for testing. My goal is to have it check the airport database, get all the runways,
+			display them, then ask the user which runway. check the answer to see if it matches then call declarTaxi. 
+			Towerd controll airports may have a seperate function.			
+			*/
+		 
+
 		//atc functions
-		public static void declarTaxi (string airport, string callSign, string runway) {
-			Console.WriteLine(airport + " traffic, " + callSign + " Taxiing to runway " + runway + "" + airport);
+		public static void declarTaxi (string runway) 
+		{
+			Console.WriteLine(currentAirport + " traffic, " + callSign + " Taxiing to runway " + runway + "" + currentAirport);
 		}
 
-		public static void AtcGround (string airport, string callSign){
-
-			//display action menu
-			Console.WriteLine("Currently at: " + airport + "callsign: " + callSign);
-			Console.WriteLine("a. Declar taxi intentions");
-			Console.WriteLine("b. Declar departing");
-			string answer = Console.ReadLine();
-			declarTaxi(airport, callSign, "24");
-
-
+		public static void AtcGround (string airport, string callSign)
+		{
+			Console.WriteLine ("Currently at: " + airport + "callsign: " + callSign);
+			Console.WriteLine ("a. Declar taxi intentions");
+			string answer = Console.ReadLine ();
+			if (answer == "a") {
+				Console.WriteLine ("What runway?");
+				//current runway list is for testing
+				Console.WriteLine ("a.Runway 28");
+				answer = Console.ReadLine ();
+				if (answer == "a") {
+					declarTaxi ("28");
+				} else if (answer != "a") {
+					Console.WriteLine ("Incorrect option");
+					Environment.Exit (0);
+				}
+			} else if (answer != "a") {
+				Console.WriteLine("Incorrect option");
+				Environment.Exit (0);
+			}
 		}
-
 	}
-
 }
