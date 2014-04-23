@@ -3,4 +3,5 @@ Encoding=UTF-8
 Type=Application
 Name=XPlaneAtc
 Exec=xplaneatc
-Terminal=false
+Terminal=true
+Comment=
