@@ -1,5 +1,5 @@
 using System;
-using System.Collections;
+using System.Collections;Sorcus
 
 
 namespace XPlaneAtc
@@ -33,8 +33,9 @@ namespace XPlaneAtc
 			airports[0] = "KSMD";
 			airports[1] = "KFWA";
 
+
 			//set variables
-			currentPosition = "init"; //init for initialize
+			currentPosition = "init"; 
 
 			Console.WriteLine ("Enter callsign. Ex: N1865");
 
@@ -81,7 +82,7 @@ namespace XPlaneAtc
 				if (currentPosition == "ground") {
 					if (currentAirport == startAirport) {
 						System.Threading.Tasks.Task.Factory.StartNew(() => AtcGround(currentAirport, callSign));
-						//AtcGround (currentAirport, callSign);
+						//AtcGround (currentAirport, callSign);0
 					}
 				}
 			}

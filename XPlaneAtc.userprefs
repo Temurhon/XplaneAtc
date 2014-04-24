@@ -1,9 +1,20 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="XPlaneAtc\Main.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="XPlaneAtc/Main.cs">
     <Files>
-      <File FileName="XPlaneAtc\Main.cs" Line="96" Column="37" />
+      <File FileName="XPlaneAtc/Main.cs" Line="30" Column="29" />
+      <File FileName="XPlaneAtc/app.desktop" />
+      <File FileName="XPlaneAtc/AssemblyInfo.cs" Line="10" Column="32" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="XPlaneAtc" expanded="True">
+            <Node name="Main.cs" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
